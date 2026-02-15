@@ -127,13 +127,20 @@ def update_entry(entry_id):
 @app.route('/api/entries/<entry_id>', methods=['DELETE'])
 def delete_entry(entry_id):
     data = load_data()
-    data['entries'] = [e for e in data['entries'] if e['id'] != entry_id]
+    data['entries'] = [e for e in data['entries'] if e['file_id'] != entry_id]
     save_data(data)
     return jsonify({"success": True})
 
 @app.route('/public/<path:filename>')
 def public_files(filename):
-    return send_from_directory('public', filename)
+    response = send_from_directory('public', filename)
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Cache-Control'] = 'public, max-age=86400'  
+    return response
+
+@app.route('/logo.png')
+def logo():
+    return send_from_directory('public', 'logo.png')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
