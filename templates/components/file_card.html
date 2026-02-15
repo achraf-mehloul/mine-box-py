@@ -1,0 +1,10 @@
+<div class="file-card" style="border-top: 4px solid {{ color }}">
+    <div class="file-icon">{{ icon }}</div>
+    <div class="file-name">{{ name }}</div>
+    <div class="file-meta">
+        <span>{{ entries_count }} مدخلاً</span>
+        {% if entries_count > 0 %}
+        <span class="file-badge">نشط</span>
+        {% endif %}
+    </div>
+</div>

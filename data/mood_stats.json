@@ -1,0 +1,57 @@
+{
+    "moods": [
+        {
+            "emoji": "😊",
+            "name": "سعيد",
+            "color": "#9d4edd",
+            "category": "positive"
+        },
+        {
+            "emoji": "😐",
+            "name": "محايد",
+            "color": "#c77dff",
+            "category": "neutral"
+        },
+        {
+            "emoji": "😕",
+            "name": "حزين",
+            "color": "#7b2cbf",
+            "category": "negative"
+        },
+        {
+            "emoji": "🤩",
+            "name": "متحمس",
+            "color": "#ff9e00",
+            "category": "positive"
+        },
+        {
+            "emoji": "😴",
+            "name": "نعسان",
+            "color": "#00b8a9",
+            "category": "neutral"
+        },
+        {
+            "emoji": "🤔",
+            "name": "مفكر",
+            "color": "#f85f5f",
+            "category": "neutral"
+        },
+        {
+            "emoji": "🥳",
+            "name": "محتفل",
+            "color": "#9d4edd",
+            "category": "positive"
+        },
+        {
+            "emoji": "😎",
+            "name": "رائع",
+            "color": "#c77dff",
+            "category": "positive"
+        }
+    ],
+    "statistics": {
+        "most_common_mood": "😊",
+        "happiest_day": "الجمعة",
+        "most_productive_mood": "🤩"
+    }
+}

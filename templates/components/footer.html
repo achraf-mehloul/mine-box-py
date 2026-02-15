@@ -1,0 +1,68 @@
+<div class="app-footer">
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="/" class="footer-link">
+                <span class="footer-icon">🏠</span>
+                <span class="footer-text">الرئيسية</span>
+            </a>
+            <a href="/profile" class="footer-link">
+                <span class="footer-icon">👤</span>
+                <span class="footer-text">حسابي</span>
+            </a>
+            <a href="/stats" class="footer-link">
+                <span class="footer-icon">📊</span>
+                <span class="footer-text">إحصائيات</span>
+            </a>
+        </div>
+        <div class="footer-copyright">
+            <span>© 2025 MindBox - جميع الحقوق محفوظة</span>
+        </div>
+    </div>
+</div>
+
+<style>
+.app-footer {
+    margin-top: 24px;
+    padding: 16px 24px;
+    background: rgba(26, 0, 46, 0.3);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(157, 78, 221, 0.2);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 16px;
+}
+
+.footer-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #c0b0d0;
+    transition: all 0.3s;
+}
+
+.footer-link:hover {
+    color: #9d4edd;
+    transform: translateY(-3px);
+}
+
+.footer-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.footer-text {
+    font-size: 12px;
+}
+
+.footer-copyright {
+    text-align: center;
+    color: #c0b0d0;
+    font-size: 11px;
+    opacity: 0.7;
+}
+</style>

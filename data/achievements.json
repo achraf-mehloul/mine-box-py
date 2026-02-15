@@ -1,0 +1,124 @@
+{
+    "achievements": [
+        {
+            "id": "first_entry",
+            "name": "البداية",
+            "description": "أضفت أول مدخلة",
+            "icon": "📝",
+            "condition": "entries >= 1",
+            "points": 10
+        },
+        {
+            "id": "entry_10",
+            "name": "الكاتب النشط",
+            "description": "أضفت 10 مدخلات",
+            "icon": "✍️",
+            "condition": "entries >= 10",
+            "points": 50
+        },
+        {
+            "id": "entry_50",
+            "name": "الكاتب المحترف",
+            "description": "أضفت 50 مدخلة",
+            "icon": "📚",
+            "condition": "entries >= 50",
+            "points": 200
+        },
+        {
+            "id": "first_file",
+            "name": "المنظم",
+            "description": "أنشأت أول ملف",
+            "icon": "📁",
+            "condition": "files >= 1",
+            "points": 10
+        },
+        {
+            "id": "files_5",
+            "name": "منظم محترف",
+            "description": "أنشأت 5 ملفات",
+            "icon": "🗂️",
+            "condition": "files >= 5",
+            "points": 50
+        },
+        {
+            "id": "task_10",
+            "name": "منجز المهام",
+            "description": "أنجزت 10 مهام",
+            "icon": "✅",
+            "condition": "completed_tasks >= 10",
+            "points": 30
+        },
+        {
+            "id": "task_50",
+            "name": "مايسترو الإنجاز",
+            "description": "أنجزت 50 مهمة",
+            "icon": "🏆",
+            "condition": "completed_tasks >= 50",
+            "points": 150
+        },
+        {
+            "id": "problem_solver",
+            "name": "حلال المشاكل",
+            "description": "سجلت 5 مشاكل مع حلولها",
+            "icon": "⚠️",
+            "condition": "problems >= 5",
+            "points": 40
+        },
+        {
+            "id": "achiever",
+            "name": "صاحب الإنجازات",
+            "description": "سجلت 10 إنجازات",
+            "icon": "🏅",
+            "condition": "achievements_count >= 10",
+            "points": 100
+        },
+        {
+            "id": "mood_master",
+            "name": "متتبع المزاج",
+            "description": "استخدمت 5 أنواع مختلفة من المزاج",
+            "icon": "🎭",
+            "condition": "mood_variety >= 5",
+            "points": 30
+        },
+        {
+            "id": "weekly_active",
+            "name": "النشط الأسبوعي",
+            "description": "أضفت مدخلات لمدة 7 أيام متتالية",
+            "icon": "🔥",
+            "condition": "weekly_streak >= 7",
+            "points": 70
+        },
+        {
+            "id": "monthly_active",
+            "name": "النشط الشهري",
+            "description": "أضفت مدخلات لمدة 30 يوم متتالية",
+            "icon": "⚡",
+            "condition": "monthly_streak >= 30",
+            "points": 300
+        },
+        {
+            "id": "diversity",
+            "name": "متنوع",
+            "description": "استخدمت جميع أنواع العناصر",
+            "icon": "🌈",
+            "condition": "all_types_used",
+            "points": 100
+        },
+        {
+            "id": "storage_50",
+            "name": "جامع الذكريات",
+            "description": "استخدمت 50 ميجابايت من التخزين",
+            "icon": "💾",
+            "condition": "storage >= 50",
+            "points": 150
+        },
+        {
+            "id": "veteran",
+            "name": "المخضرم",
+            "description": "عمر حسابك أكثر من سنة",
+            "icon": "👑",
+            "condition": "account_age_days >= 365",
+            "points": 500
+        }
+    ]
+}

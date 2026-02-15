@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBox • الإحصائيات</title>
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <button class="back-btn" onclick="window.location.href='/profile'">←</button>
+            <h1>إحصائيات مفصلة</h1>
+            <div style="width: 40px;"></div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card large">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value" id="productivityScore">0</div>
+                <div class="stat-label">نقاط الإنتاجية</div>
+            </div>
+            <div class="stat-card large">
+                <div class="stat-icon">📝</div>
+                <div class="stat-value" id="totalEntriesStats">0</div>
+                <div class="stat-label">إجمالي المدخلات</div>
+            </div>
+        </div>
+
+        <div class="chart-section">
+            <h3>النشاط اليومي (آخر 30 يوم)</h3>
+            <canvas id="activityChart"></canvas>
+        </div>
+
+        <div class="chart-section">
+            <h3>توزيع أنواع المدخلات</h3>
+            <canvas id="entriesTypeChart"></canvas>
+        </div>
+
+        <div class="chart-section">
+            <h3>توزيع المزاج</h3>
+            <canvas id="moodPieChart"></canvas>
+        </div>
+
+        <div class="achievements-section">
+            <h3>جميع الإنجازات</h3>
+            <div class="achievements-grid" id="allAchievementsGrid">
+            </div>
+        </div>
+
+        <div class="stats-details">
+            <h3>تفاصيل إضافية</h3>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <span>📝 مدخلات نصية</span>
+                    <span id="textCount">0</span>
+                </div>
+                <div class="detail-item">
+                    <span>✅ قوائم</span>
+                    <span id="checklistCount">0</span>
+                </div>
+                <div class="detail-item">
+                    <span>⭐ مهم</span>
+                    <span id="highlightCount">0</span>
+                </div>
+                <div class="detail-item">
+                    <span>⚠️ مشاكل</span>
+                    <span id="problemCount">0</span>
+                </div>
+                <div class="detail-item">
+                    <span>🏆 إنجازات</span>
+                    <span id="achievementCount">0</span>
+                </div>
+                <div class="detail-item">
+                    <span>💾 حجم التخزين</span>
+                    <span id="storageSize">0 MB</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/charts.js"></script>
+</body>
+</html>

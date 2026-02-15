@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MindBox • فضاء الذكريات</title>
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app" id="app">
+        <div class="status-bar">
+            <span class="current-date" id="currentDate"></span>
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <img src="/public/logo.png" alt="MindBox" style="width: 30px; height: 30px; border-radius: 10px;" onerror="this.style.display='none'; this.parentElement.innerHTML='🧠';">
+                </div>
+                <span class="logo-text">MindBox</span>
+            </div>
+        </div>
+
+        <div class="headline">
+            <h1>Right ur memory</h1>
+            <div class="date">
+                <span>✨</span>
+                <span>100% Free</span>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <h2>ملفاتي</h2>
+            <button id="addFileBtn" aria-label="إضافة ملف جديد">+</button>
+        </div>
+
+        <div class="files-scroll" id="filesContainer">
+        </div>
+
+        <div class="current-file-header" id="currentFileHeader" style="display: none;">
+            <button class="back-button" id="backToFiles">←</button>
+            <h3 id="currentFileName"></h3>
+            <div class="file-actions">
+                <button class="icon-btn" id="editFileBtn">✎</button>
+                <button class="icon-btn" id="deleteFileBtn">🗑️</button>
+            </div>
+        </div>
+
+        <div class="entries-list" id="entriesContainer"></div>
+
+        <button class="fab" id="addEntryBtn" style="display: none;">+</button>
+
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div style="font-size: 80px; margin-bottom: 20px;">📦</div>
+            <p>لا توجد ملفات بعد<br>أنشئ أول ملف وابدأ رحلتك!</p>
+        </div>
+
+        <div class="offline-indicator">
+            <span>⚡ بدون إنترنت - محلي ١٠٠٪</span>
+        </div>
+    </div>
+
+    <div class="modal" id="fileModal">
+        <div class="modal-content">
+            <h3 id="fileModalTitle">ملف جديد</h3>
+            <input type="text" id="fileName" placeholder="اسم الملف" class="modal-input" autocomplete="off">
+            
+            <div class="icon-selector">
+                <label>الأيقونة:</label>
+                <select id="fileIcon" class="modal-input">
+                    <option value="📁">📁 ملف</option>
+                    <option value="📓">📓 جامعة</option>
+                    <option value="💡">💡 أفكار</option>
+                    <option value="🏆">🏆 إنجازات</option>
+                    <option value="❤️">❤️ شخصي</option>
+                    <option value="⚡">⚡ سريع</option>
+                    <option value="🎯">🎯 أهداف</option>
+                    <option value="📝">📝 مذكرات</option>
+                </select>
+            </div>
+            
+            <div class="color-selector">
+                <label>اللون:</label>
+                <div class="color-options">
+                    <div class="color-option" style="background: #9d4edd" data-color="#9d4edd"></div>
+                    <div class="color-option" style="background: #c77dff" data-color="#c77dff"></div>
+                    <div class="color-option" style="background: #7b2cbf" data-color="#7b2cbf"></div>
+                    <div class="color-option" style="background: #ff9e00" data-color="#ff9e00"></div>
+                    <div class="color-option" style="background: #00b8a9" data-color="#00b8a9"></div>
+                    <div class="color-option" style="background: #f85f5f" data-color="#f85f5f"></div>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn-secondary" id="cancelFileModal">إلغاء</button>
+                <button class="btn-primary" id="saveFileBtn">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="entryModal">
+        <div class="modal-content modal-large">
+            <h3 id="entryModalTitle">مدخلة جديدة</h3>
+            
+            <div class="mood-selector">
+                <label>المزاج:</label>
+                <div class="mood-options">
+                    <span class="mood-option" data-mood="😊">😊</span>
+                    <span class="mood-option" data-mood="😐">😐</span>
+                    <span class="mood-option" data-mood="😕">😕</span>
+                    <span class="mood-option" data-mood="🤩">🤩</span>
+                    <span class="mood-option" data-mood="😴">😴</span>
+                    <span class="mood-option" data-mood="🤔">🤔</span>
+                    <span class="mood-option" data-mood="🥳">🥳</span>
+                    <span class="mood-option" data-mood="😎">😎</span>
+                </div>
+            </div>
+
+            <div id="elementsContainer" class="elements-container"></div>
+
+            <div class="add-element-buttons">
+                <button class="element-btn" data-type="text">📝 نص</button>
+                <button class="element-btn" data-type="checklist">✅ قائمة</button>
+                <button class="element-btn" data-type="highlight">⭐ مهم</button>
+                <button class="element-btn" data-type="problem">⚠️ مشكلة</button>
+                <button class="element-btn" data-type="achievement">🏆 إنجاز</button>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" id="cancelEntryModal">إلغاء</button>
+                <button class="btn-primary" id="saveEntryBtn">حفظ المدخلة</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

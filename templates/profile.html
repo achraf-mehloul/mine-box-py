@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBox • حسابي</title>
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+    <link rel="stylesheet" href="/static/css/profile.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <button class="back-btn" onclick="window.location.href='/'">←</button>
+            <h1>حسابي</h1>
+            <button class="settings-btn">⚙️</button>
+        </div>
+
+        <div class="profile-avatar">
+            <div class="avatar-wrapper" id="avatarWrapper">
+                <img id="avatarImg" src="/public/default-avatar.png" alt="Avatar">
+                <div class="avatar-overlay" onclick="document.getElementById('avatarInput').click()">
+                    <span>📸</span>
+                </div>
+            </div>
+            <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+            <h2 id="userName">أحمد محمد</h2>
+            <p id="userEmail">ahmed@email.com</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📝</div>
+                <div class="stat-value" id="totalEntries">0</div>
+                <div class="stat-label">مدخلة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📁</div>
+                <div class="stat-value" id="totalFiles">0</div>
+                <div class="stat-label">ملف</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value" id="completedTasks">0</div>
+                <div class="stat-label">مهمة منجزة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value" id="completionRate">0%</div>
+                <div class="stat-label">نسبة الإنجاز</div>
+            </div>
+        </div>
+
+        <div class="storage-section">
+            <h3>مساحة التخزين</h3>
+            <div class="storage-bar">
+                <div class="storage-fill" id="storageFill" style="width: 0%"></div>
+            </div>
+            <div class="storage-info">
+                <span id="storageUsed">0 MB</span>
+                <span>من 100 MB</span>
+            </div>
+        </div>
+
+        <div class="mood-section">
+            <h3>توزيع المزاج</h3>
+            <div class="mood-chart" id="moodChart">
+                <div class="mood-item">
+                    <span>😊</span>
+                    <div class="mood-bar">
+                        <div class="mood-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="mood-count" id="moodHappy">0</span>
+                </div>
+                <div class="mood-item">
+                    <span>😐</span>
+                    <div class="mood-bar">
+                        <div class="mood-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="mood-count" id="moodNeutral">0</span>
+                </div>
+                <div class="mood-item">
+                    <span>😕</span>
+                    <div class="mood-bar">
+                        <div class="mood-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="mood-count" id="moodSad">0</span>
+                </div>
+                <div class="mood-item">
+                    <span>🤩</span>
+                    <div class="mood-bar">
+                        <div class="mood-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="mood-count" id="moodExcited">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="achievements-section">
+            <h3>الإنجازات</h3>
+            <div class="achievements-grid" id="achievementsGrid">
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">📝</div>
+                    <div class="achievement-name">الكاتب النشط</div>
+                    <div class="achievement-desc">أضف 10 مدخلات</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-section">
+            <h3>النشاط</h3>
+            <div class="activity-stats">
+                <div class="activity-item">
+                    <span>عمر الحساب</span>
+                    <span id="accountAge">0 يوم</span>
+                </div>
+                <div class="activity-item">
+                    <span>آخر نشاط</span>
+                    <span id="lastActive">اليوم</span>
+                </div>
+                <div class="activity-item">
+                    <span>نقاط الإنتاجية</span>
+                    <span id="productivityScore">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <button class="action-btn" onclick="window.location.href='/stats'">
+                <span>📊</span>
+                إحصائيات مفصلة
+            </button>
+            <button class="action-btn" id="logoutBtn">
+                <span>🚪</span>
+                تسجيل الخروج
+            </button>
+        </div>
+    </div>
+
+    <script src="/static/js/profile.js"></script>
+</body>
+</html>

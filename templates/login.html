@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBox • تسجيل الدخول</title>
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f001f 0%, #1a0033 50%, #2d0a4a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 80px 120px, #fff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 160px 50px, #9d4edd, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 300px 180px, #9d4edd, rgba(0,0,0,0));
+            background-repeat: repeat;
+            opacity: 0.5;
+            animation: twinkle 5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .container {
+            max-width: 420px;
+            width: 100%;
+            background: rgba(26, 0, 46, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px;
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 0 30px rgba(157, 78, 221, 0.3);
+            overflow: hidden;
+            padding: 32px 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #c77dff, #9d4edd, #7b2cbf);
+            border-radius: 50px;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(15px);
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.3; filter: blur(15px); }
+            50% { opacity: 0.6; filter: blur(20px); }
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(26, 0, 46, 0.3);
+            backdrop-filter: blur(8px);
+            padding: 16px;
+            border-radius: 40px;
+            border: 1px solid rgba(157, 78, 221, 0.2);
+        }
+
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #9d4edd 0%, #6a1fb1 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(157, 78, 221, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .logo-icon img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, #e0b0ff 50%, #c77dff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(157, 78, 221, 0.5);
+        }
+
+        .subtitle {
+            color: #c0b0d0;
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 14px;
+            background: rgba(0,0,0,0.2);
+            padding: 8px 16px;
+            border-radius: 40px;
+        }
+
+        .profile-image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-image-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            background: rgba(157, 78, 221, 0.2);
+            border: 3px dashed #9d4edd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .profile-image-preview:hover {
+            border-color: #c77dff;
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(157, 78, 221, 0.6);
+        }
+
+        .profile-image-preview.has-image {
+            border: 3px solid #9d4edd;
+        }
+
+        .profile-image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .upload-icon {
+            font-size: 28px;
+            color: #9d4edd;
+            margin-bottom: 4px;
+        }
+
+        .upload-text {
+            color: #c0b0d0;
+            font-size: 11px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .upload-btn {
+            background: rgba(157, 78, 221, 0.2);
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(4px);
+        }
+
+        .upload-btn:hover {
+            background: #9d4edd;
+            box-shadow: 0 0 30px #9d4edd;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            display: block;
+            color: white;
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(157, 78, 221, 0.3);
+            border-radius: 30px;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s;
+            backdrop-filter: blur(4px);
+        }
+
+        .input-field:focus {
+            border-color: #9d4edd;
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.5);
+            outline: none;
+        }
+
+        .input-field::placeholder {
+            color: #c0b0d0;
+            opacity: 0.5;
+        }
+
+        .full-name-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .full-name-container .input-field {
+            flex: 1;
+        }
+
+        .about-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(157, 78, 221, 0.3);
+            border-radius: 30px;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s;
+            backdrop-filter: blur(4px);
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+
+        .about-textarea:focus {
+            border-color: #9d4edd;
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.5);
+            outline: none;
+        }
+
+        .about-textarea::placeholder {
+            color: #c0b0d0;
+            opacity: 0.5;
+        }
+
+        .icon-input {
+            position: relative;
+        }
+
+        .icon-input .input-field {
+            padding-right: 45px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #9d4edd;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #9d4edd 0%, #6a1fb1 100%);
+            border: none;
+            border-radius: 40px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 40px rgba(157, 78, 221, 0.6);
+            margin: 20px 0 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .register-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 70px rgba(157, 78, 221, 0.8);
+        }
+
+        .terms {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #c0b0d0;
+            font-size: 12px;
+            margin: 12px 0;
+        }
+
+        .terms input[type="checkbox"] {
+            accent-color: #9d4edd;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .storage-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: #c0b0d0;
+            font-size: 12px;
+            margin: 12px 0;
+            padding: 8px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 40px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1.5px;
+            margin: 15px 0 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #9d4edd, #c77dff);
+            border-radius: 1.5px;
+            animation: progress 2s ease-in-out infinite;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+
+        .welcome-message {
+            text-align: center;
+            color: #c0b0d0;
+            font-size: 13px;
+            margin-top: 12px;
+            padding: 10px;
+            background: rgba(157, 78, 221, 0.1);
+            border-radius: 30px;
+            border: 1px solid rgba(157, 78, 221, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <img src="/public/logo.png" alt="MindBox" onerror="this.style.display='none'; this.parentElement.innerHTML='🧠';">
+            </div>
+            <div class="logo-text">MindBox</div>
+        </div>
+
+        <div class="subtitle">مساحتك الآمنة للذكريات</div>
+
+        <div class="profile-image-container">
+            <div class="profile-image-preview" id="profilePreview" onclick="document.getElementById('profileImage').click()">
+                <div class="upload-icon">📸</div>
+                <div class="upload-text">اضغط لرفع صورة</div>
+            </div>
+            <input type="file" id="profileImage" class="file-input" accept="image/*">
+            <label for="profileImage" class="upload-btn">اختر صورة</label>
+        </div>
+
+        <form id="registerForm">
+            <div class="input-group">
+                <label class="input-label">الاسم الكامل</label>
+                <div class="full-name-container">
+                    <input type="text" class="input-field" placeholder="الاسم" id="firstName">
+                    <input type="text" class="input-field" placeholder="اللقب" id="lastName">
+                </div>
+            </div>
+
+            <div class="input-group icon-input">
+                <label class="input-label">البريد الإلكتروني</label>
+                <span class="input-icon">📧</span>
+                <input type="email" class="input-field" placeholder="example@email.com" id="email" style="padding-right: 45px;">
+            </div>
+
+            <div class="input-group icon-input">
+                <label class="input-label">رقم الهاتف</label>
+                <span class="input-icon">📱</span>
+                <input type="tel" class="input-field" placeholder="05xxxxxxxx" id="phone" style="padding-right: 45px;">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">عن نفسي</label>
+                <textarea class="about-textarea" id="about" placeholder="اكتب قليلاً عن نفسك، هواياتك، اهتماماتك..."></textarea>
+            </div>
+
+            <div class="terms">
+                <input type="checkbox" id="terms" checked>
+                <label for="terms">أوافق على تخزين بياناتي محلياً في جهازي</label>
+            </div>
+
+            <button type="submit" class="register-btn">ابدأ رحلتك ✨</button>
+        </form>
+
+        <div class="storage-info">
+            <span>💾</span>
+            <span>جميع بياناتك مخزنة محلياً على جهازك</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <div class="welcome-message" id="welcomeMessage">
+            مرحباً بك في MindBox! 👋
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('profileImage').addEventListener('change', function(e) {
+            const preview = document.getElementById('profilePreview');
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover;">`;
+                    preview.classList.add('has-image');
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const about = document.getElementById('about').value;
+            const terms = document.getElementById('terms').checked;
+
+            if (!firstName || !lastName || !email || !phone) {
+                alert('الرجاء ملء جميع الحقول الأساسية');
+                return;
+            }
+
+            if (!terms) {
+                alert('الرجاء الموافقة على تخزين البيانات محلياً');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('first_name', firstName);
+            formData.append('last_name', lastName);
+            formData.append('email', email);
+            formData.append('phone', phone);
+            formData.append('about', about);
+            
+            const avatarFile = document.getElementById('profileImage').files[0];
+            if (avatarFile) {
+                formData.append('avatar', avatarFile);
+            }
+
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    const welcomeMsg = document.getElementById('welcomeMessage');
+                    welcomeMsg.innerHTML = `🎉 مرحباً ${firstName} ${lastName}! تم تحضير مساحتك الشخصية`;
+                    welcomeMsg.style.background = 'rgba(0, 184, 169, 0.2)';
+                    welcomeMsg.style.borderColor = '#00b8a9';
+                    
+                    localStorage.setItem('mindbox_user', JSON.stringify(result.user));
+                    
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1500);
+                } else {
+                    alert(result.error || 'حدث خطأ أثناء التسجيل');
+                }
+            } catch (error) {
+                alert('حدث خطأ في الاتصال بالخادم');
+            }
+        });
+
+        const savedUser = localStorage.getItem('mindbox_user');
+        if (savedUser) {
+            const user = JSON.parse(savedUser);
+            document.getElementById('welcomeMessage').innerHTML = `👋 أهلاً بعودتك ${user.first_name}!`;
+        }
+    </script>
+</body>
+</html>
